@@ -1,14 +1,26 @@
+import java.lang.reflect.Array;
 import java.util.*;
 public class Medium {
+	int first = -1;
+	int currentValue = 0;
+	boolean foundCurrentValue = false;
+	int targetValue = -1;
 	public int generateNextPermutation(int[] num)
 	{
 		
-		return 0;
+		for(int i = 0;i<num.length;i++)
+		{
+			currentValue = currentValue*10 + num[i];
+		}
+		Arrays.sort(num);
+		List<Integer> result = new ArrayList<Integer>();
+		generateNums(0,num,result);
+		
+		int a = (targetValue==-1?first:targetValue);
+		System.out.println("next permutation is "+a);
+		return a;
 	}
-	int first = -1;
-	int currentValue = 123;
-	boolean foundCurrentValue = false;
-	int targetValue = -1;
+
 	public boolean generateNums(int used, int[] toBeUsed, List<Integer> result)
 	{
 		boolean allUsed = true;
